@@ -1,7 +1,8 @@
 import React from "react";
 import styled from "styled-components";
+import { twMerge } from "tailwind-merge";
 import { ButtonProps } from "./Button.types";
-import { button_colors } from "../../constants/Button.constants";
+import { button_colors } from "./styles/Button.constants";
 
 const StyledButton = styled.button<ButtonProps>`
   gap: 8px;
@@ -55,6 +56,15 @@ const Button: React.FC<ButtonProps> = ({
   const disabledStyle = button_colors[primaryKey][variant].disabled;
   const width = `${size === 'small' ?  'w-18' : size === 'medium' ? 'w-36' : size === 'large' ? 'w-72' : 'full' ? 'w-full' : ''}`;
   const shape = `${round ? 'rounded-full' : 'rounded-2xl' }`;
+  const generatedClasses = twMerge(`
+    ${defaultClasses}
+    ${defaultStyle}
+    ${hover}
+    ${pressed}
+    ${disabled ? disabledStyle : ''}
+    ${width}
+    ${shape}
+  `)
 
   // Input template literals as classname to determine tailwind classes
   return (
@@ -65,15 +75,7 @@ const Button: React.FC<ButtonProps> = ({
       onClick={onClick}
       disabled={disabled}
       size={size}
-      className={`
-        ${defaultClasses}
-        ${defaultStyle}
-        ${hover}
-        ${pressed}
-        ${disabled ? disabledStyle : ''}
-        ${width}
-        ${shape}
-      `}
+      className={generatedClasses}
       role="button"
     >
       {text}
