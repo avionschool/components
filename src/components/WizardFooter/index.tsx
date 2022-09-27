@@ -40,7 +40,7 @@ const WizardFooter: React.FC<WizardFooterProps> = ({
         <Button
           variant="solid"
           size="medium"
-          text="< Previous"
+          text="< Prev"
           className={isPrevEnabled() ? 'flex-1' : 'invisible'}
           onClick={onPrev ? onPrev : () => navigate(getPrevLink())}
           round

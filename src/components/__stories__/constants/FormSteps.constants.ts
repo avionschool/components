@@ -8,7 +8,15 @@ export const FormStepsConstants = [
     disabled: false
   },
   {
-    link: '/start/',
+    link: '/start',
+    disabled: false
+  },
+  {
+    link: '/end',
+    disabled: false
+  },
+  {
+    link: '/empty_link',
     disabled: false
   }
 ];
