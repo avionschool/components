@@ -13,14 +13,19 @@ export const Primary: ComponentStory<typeof Radio> = () => (
   <>
       <Radio
         value="default"
-        display="Default Radio Button"
+      />
+      <br/>
+      <Radio
+        value="selected"
+        checked={true}
       />
       <br/>
       <Radio
         value="disabled"
-        display="Disabled Radio Button"
         disabled={true}
       />
+      <br/>
+
   </>
 );
 Primary.storyName = 'Radio';

@@ -13,26 +13,44 @@ export const Primary: ComponentStory<typeof Checkbox> = () => (
   <>
     <Checkbox
       value="default"
-      display="Default"
+    />
+    <Checkbox
+      value="selected-small"
+      checked={true}
     />
     <br/>
     <Checkbox
       value="large"
-      display="Large Checkbox"
       large={true}
+    />
+    <br/>
+    <Checkbox
+      value="large"
+      large={true}
+      checked={true}
     />
     <br/>
     <Checkbox
       value="disabled_default"
-      display="Disabled Default Checkbox"
       disabled={true}
+    />
+    <Checkbox
+      value="disabled_default"
+      disabled={true}
+      checked={true}
     />
     <br/>
     <Checkbox
       value="disabled_large"
-      display="Disabled Large Checkbox"
       disabled={true}
       large={true}
+    />
+    <br/>
+    <Checkbox
+      value="disabled_large"
+      disabled={true}
+      large={true}
+      checked={true}
     />
   </>
 );
