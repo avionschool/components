@@ -13,28 +13,28 @@ export const BoxPrimary: ComponentStory<typeof Box> = (args) => (
   <>
     <div className="storybook-div">
       <Box>
-        <div className="justify-center align-center">
+        <div className="justify-center align-center p-20">
           Sample Default Box
         </div>
       </Box>
       <Box
         isDisabled={true}
       >
-        <div className="justify-center align-center">
+        <div className="justify-center align-center p-20">
           Sample Disabled Box
         </div>
       </Box>
       <Box
         isSelected={true}
       >
-        <div className="justify-center align-center">
+        <div className="justify-center align-center p-20">
           Sample Selected Box
         </div>
       </Box>
       <Box
         isReadOnly={true}
       >
-        <div className="justify-center align-center">
+        <div className="justify-center align-center p-20">
           Sample Readonly Box
         </div>
       </Box>
