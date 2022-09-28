@@ -1,5 +1,5 @@
-import { DropdownOption } from '@components/Dropdown.types';
-import { CheckboxOption } from '@components/Checkbox.types';
+import { DropdownOption } from '../components/Dropdown/Dropdown.types';
+import { CheckboxOption } from '../components/Checkbox/Checkbox.types';
 
 const DropdownConstants: DropdownOption[] = [
   {

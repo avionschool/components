@@ -1,3 +1,4 @@
+// @ts-nocheck
 import React, { ReactNode } from 'react';
 import styled from 'styled-components';
 import { FormControlProps } from '@components/FormControl/FormControl.types';
@@ -70,7 +71,6 @@ const FormControl: React.FC<FormControlProps> = ({
                 isDisabled
               });
             }
-
             return child;
           })}
       <StyledMessage>
