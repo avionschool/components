@@ -3,7 +3,7 @@ const path = require("path");
 const webpack = require("webpack");
 
 module.exports = {
-  entry: ["webpack/hot/dev-server.js", "./src/index.tsx"],
+  entry: ["webpack/hot/dev-server.js", "./src/index.ts"],
   devtool: "source-map",
   mode: "development",
   output: {
