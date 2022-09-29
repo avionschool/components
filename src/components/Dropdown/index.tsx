@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { twMerge } from "tailwind-merge";
-import { DropdownProps } from "@components/Dropdown/Dropdown.types";
+import { DropdownProps } from "./Dropdown.types";
 
 const StyledDropdown = styled.select<DropdownProps>`
   box-sizing: border-box;

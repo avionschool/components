@@ -1,7 +1,7 @@
 // @ts-nocheck
 import React, { ReactNode } from 'react';
 import styled from 'styled-components';
-import { FormControlProps } from '@components/FormControl/FormControl.types';
+import { FormControlProps } from './FormControl.types';
 import { twMerge } from 'tailwind-merge';
 
 const StyledLabel = styled.div`

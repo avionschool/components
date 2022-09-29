@@ -1,4 +1,4 @@
-import { SidebarItemProps } from "@components/Sidebar/SidebarItem.types";
+import { SidebarItemProps } from "./SidebarItem.types";
 
 export interface SidebarProps {
   logo: string;
