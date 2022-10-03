@@ -51,20 +51,19 @@ const getNewDate = (initial_date: Date, new_date: Date) => {
   const dayjsInitialDate = dayjs(initial_date);
   const dayjsNewDate = dayjs(new_date);
   // Check if only year has changed
-  if (dayjsInitialDate.year() !== dayjsNewDate.year()) {
+  if (dayjsInitialDate.year() !== dayjsNewDate.year() && dayjsInitialDate.month() === dayjsNewDate.month()) {
     // Retain month and date
     newDate = new Date(dayjsNewDate.year(), dayjsInitialDate.month(), dayjsInitialDate.date());
   }
   // Check if only month has changed
-  else if (dayjsInitialDate.month() !== dayjsNewDate.month()) {
+  else if (dayjsInitialDate.month() !== dayjsNewDate.month() && dayjsInitialDate.date() === dayjsNewDate.date()) {
     // Retain date
     newDate = new Date(dayjsNewDate.year(), dayjsNewDate.month(), dayjsInitialDate.date());
   } else {
     newDate = new_date;
   }
-
   return newDate;
-};
+}
 
 const Datepicker: React.FC<DatepickerProps> = ({
   initialDate,
