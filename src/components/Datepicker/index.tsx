@@ -158,7 +158,7 @@ const Datepicker: React.FC<DatepickerProps> = ({
             value={value?.toString()}
           />
         }
-        value={value ? dayjs(value).format('DD/MM/YYYY') : dayjs().subtract(18, 'year').format('DD/MM/YYYY')}
+        value={value ? dayjs(value).format('MM/DD/YYYY') : dayjs().subtract(18, 'year').format('MM/DD/YYYY')}
         dateFormat="yyyy-mm-dd"
         popperPlacement="top-start"
         data-testid={id}
