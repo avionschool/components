@@ -72,7 +72,7 @@ const getNewDate = (initial_date: Date, new_date: Date) => {
 
 const Datepicker: React.FC<DatepickerProps> = ({
   initialDate,
-  placeholderText = "Select date",
+  placeholderText = 'MM/DD/YYYY',
   id,
   name,
   onChange,
@@ -163,18 +163,10 @@ const Datepicker: React.FC<DatepickerProps> = ({
             name={name}
             id={id}
             isError={isError}
-            // value={value?.toString()}
-            // type="date"
+            mask='99/99/9999'
+            maskPlaceholder='*'
           />
         }
-        // customInput={
-        //   <input type="date" />
-        // }
-        // value={value ? dayjs(value).format('MM/DD/YYYY') : dayjs().subtract(18, 'year').format('MM/DD/YYYY')}
-        // dateFormat="yyyy/mm/dd"
-        // customInput={
-        //   <InputMask mask="99/99/9999" />
-        // }
         popperPlacement="top-start"
         data-testid={id}
         withPortal={width < 640 ? true : false}
