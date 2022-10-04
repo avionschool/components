@@ -47,6 +47,11 @@ const generateDayClassNames = (date: Date, startDate: Date) => {
 
 const getNewDate = (initial_date: Date, new_date: Date) => {
   let newDate: Date;
+
+  // Check if valid date, otherwise return null
+  if (!dayjs(new_date).isValid()) {
+    return null;
+  }
   // Converting to dayjs
   const dayjsInitialDate = dayjs(initial_date);
   const dayjsNewDate = dayjs(new_date);
@@ -95,7 +100,7 @@ const Datepicker: React.FC<DatepickerProps> = ({
     // Check if only year or month has changed
     // This is because the built-in react-datepicker's yearpicker resets the month and date.
     // Overriding it so that doesn't happen
-    const newDate = getNewDate(startDate ? startDate : new Date(), date)
+    const newDate = getNewDate(startDate ? startDate : new Date(), date);
 
     // Check if monthpicker is open
     if (showMonthPicker) {
@@ -107,9 +112,12 @@ const Datepicker: React.FC<DatepickerProps> = ({
       setShowYearPicker(false);
     }
 
-    onChange ? onChange(name, dayjs(newDate).format('YYYY-MM-DD')) : '';
+    // Check if computed date is null
+    if (newDate) {
+      onChange ? onChange(name, dayjs(newDate).format('YYYY-MM-DD')) : '';
 
-    setStartDate(newDate);
+      setStartDate(newDate);
+    }
   }
 
   return (
@@ -149,17 +157,24 @@ const Datepicker: React.FC<DatepickerProps> = ({
         showYearPicker={showYearPicker}
         onCalendarClose={closeCalendarCallback}
         shouldCloseOnSelect={showMonthPicker || showYearPicker ? false : true}
-        placeholderText={placeholderText}
+        placeholderText="MM/DD/YYYY"
         customInput={
           <Input
             name={name}
             id={id}
             isError={isError}
-            value={value?.toString()}
+            // value={value?.toString()}
+            // type="date"
           />
         }
-        value={value ? dayjs(value).format('MM/DD/YYYY') : dayjs().subtract(18, 'year').format('MM/DD/YYYY')}
-        dateFormat="yyyy-mm-dd"
+        // customInput={
+        //   <input type="date" />
+        // }
+        // value={value ? dayjs(value).format('MM/DD/YYYY') : dayjs().subtract(18, 'year').format('MM/DD/YYYY')}
+        // dateFormat="yyyy/mm/dd"
+        // customInput={
+        //   <InputMask mask="99/99/9999" />
+        // }
         popperPlacement="top-start"
         data-testid={id}
         withPortal={width < 640 ? true : false}
