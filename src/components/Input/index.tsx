@@ -2,20 +2,7 @@ import React, { useState } from "react";
 import { InputProps } from "./Input.types";
 import styled from "styled-components";
 import { twMerge } from "tailwind-merge";
-
-const StyledInput = styled.input<InputProps>`
-  box-sizing: border-box;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 100%;
-  border-radius: 12px;
-  flex: none;
-  order: 1;
-  align-self: stretch;
-  flex-grow: 0;
-`;
-
+import InputMask from 'react-input-mask';
 
 const Input: React.FC<InputProps> = ({
   id,
@@ -36,6 +23,9 @@ const Input: React.FC<InputProps> = ({
   value,
   ref,
   maxLength,
+  mask='',
+  maskPlaceholder='',
+  alwaysShowMask=false,
   ...props
 }) => {
   const errorClasses = isError ? 'text-error-500 border-error-500 bg-error-100 border-solid' : '';
@@ -55,6 +45,16 @@ const Input: React.FC<InputProps> = ({
     bg-grayscale-light-body
     flex
     justify-content
+    box-border
+    flex
+    flex-col
+    items-center
+    w-full
+    rounded-xl
+    flex-none
+    order-1
+    self-stretch
+    grow-0
     ${errorClasses}
     ${warningClasses}
     ${successClasses}
@@ -64,7 +64,10 @@ const Input: React.FC<InputProps> = ({
 
   return (
     <>
-      <StyledInput
+      <InputMask
+        mask={mask}
+        maskChar={null}
+        alwaysShowMask={alwaysShowMask}
         id={id}
         name={name}
         type={type}
