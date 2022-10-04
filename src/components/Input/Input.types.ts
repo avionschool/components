@@ -20,4 +20,8 @@ export interface InputProps {
   className?: string;
   ref?: React.MutableRefObject<any>;
   maxLength?: number;
+  styled?: string;
+  maskPlaceholder?: string;
+  mask?: string;
+  alwaysShowMask?: boolean;
 }
