@@ -26,6 +26,9 @@ const Input: React.FC<InputProps> = ({
   mask='',
   maskPlaceholder='',
   alwaysShowMask=false,
+  onKeyDown,
+  onKeyUp,
+  inputMode,
   ...props
 }) => {
   const errorClasses = isError ? 'text-error-500 border-error-500 bg-error-100 border-solid' : '';
@@ -81,6 +84,9 @@ const Input: React.FC<InputProps> = ({
         defaultValue={initialValue}
         value={value}
         maxLength={maxLength}
+        onInput={onKeyDown}
+        onKeyUp={onKeyUp}
+        inputMode={inputMode}
         {...props}
       />
     </>
