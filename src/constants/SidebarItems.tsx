@@ -1,4 +1,4 @@
-import { SidebarItemProps } from '../components/Sidebar/SidebarItem.types';
+import SidebarItemProps from '../components/Sidebar/SidebarItem.types';
 import React, { ReactNode } from 'react';
 import { BiHomeAlt, BiFile, BiUserVoice, BiPieChartAlt2, BiCog, BiPowerOff  } from 'react-icons/bi';
 

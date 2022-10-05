@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { isTemplateExpression } from 'typescript';
-import { SidebarItemProps } from './SidebarItem.types';
+import SidebarItemProps from './SidebarItem.types';
 
 const SidebarItem: React.FC<SidebarItemProps> = ({
     link,
