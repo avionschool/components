@@ -1,6 +1,6 @@
 import React from "react";
 
-export interface SidebarItemProps {
+export default interface SidebarItemProps {
   link: string;
   name: React.ReactNode; 
   isActive?: boolean;

@@ -87,7 +87,7 @@ const Sidebar: React.FC<SidebarProps> = ({
           <div className="flex flex-col justify-center py-5 px-0 box-border gap-6 self-stretch grow-0 order-5 w-[100%]">
             <div className="flex justify-between p-0 gap-6 h-10 self-stretch grow-0 order-5">
               <div className="w-10 h-10">
-                <Link to="/overview">
+                <Link to="/">
                   <img src={AvionMobileLogo} alt={logoAlt} />
                 </Link>
               </div>
@@ -112,7 +112,7 @@ const Sidebar: React.FC<SidebarProps> = ({
         <div className="nav py-5 lg:py-10 items-center justify-center">
           <div className={logoDivClasses}>
             <div className={`flex flex-col lg:mt-4`}>
-              <Link to="/overview">
+              <Link to="/">
                 <img className="h-8 p-1 hidden lg:block flex" src={AvionLogo} alt={logoAlt} />
                 <img className="lg:hidden" src={AvionMobileLogo} alt={mobileLogoAlt} />
               </Link>
