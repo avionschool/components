@@ -70,7 +70,8 @@ const DatepickerHeader: React.FC<DatepickerHeaderProps> = ({
           text-center
           bold
           p-2
-          ${showYearPicker ? '' : 'hover:bg-primary-100 cursor-pointer'}
+          text-primary-500
+          ${showYearPicker ? '' : 'hover:bg-primary-100 active:text-grayscale-light-white active:bg-primary-600 cursor-pointer'}
         `
       }
         onClick={showMonthPicker ? openYearPicker : openMonthPicker}
