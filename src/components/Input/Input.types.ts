@@ -24,4 +24,7 @@ export interface InputProps {
   maskPlaceholder?: string;
   mask?: string;
   alwaysShowMask?: boolean;
+  onKeyDown?: JSONValue | any;
+  onKeyUp?: JSONValue | any;
+  inputMode?: string | any;
 }
