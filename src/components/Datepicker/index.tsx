@@ -45,31 +45,6 @@ const generateDayClassNames = (date: Date, startDate: Date) => {
   return dayClasses;
 };
 
-const getNewDate = (initial_date: Date, new_date: Date) => {
-  let newDate: Date;
-
-  // Check if valid date, otherwise return null
-  if (!dayjs(new_date).isValid()) {
-    return null;
-  }
-  // Converting to dayjs
-  const dayjsInitialDate = dayjs(initial_date);
-  const dayjsNewDate = dayjs(new_date);
-  // Check if only year has changed
-  if (dayjsInitialDate.year() !== dayjsNewDate.year() && dayjsInitialDate.month() === dayjsNewDate.month()) {
-    // Retain month and date
-    newDate = new Date(dayjsNewDate.year(), dayjsInitialDate.month(), dayjsInitialDate.date());
-  }
-  // Check if only month has changed
-  else if (dayjsInitialDate.month() !== dayjsNewDate.month() && dayjsInitialDate.date() === dayjsNewDate.date()) {
-    // Retain date
-    newDate = new Date(dayjsNewDate.year(), dayjsNewDate.month(), dayjsInitialDate.date());
-  } else {
-    newDate = new_date;
-  }
-  return newDate;
-}
-
 const Datepicker: React.FC<DatepickerProps> = ({
   initialDate,
   placeholderText = 'MM/DD/YYYY',
@@ -81,11 +56,12 @@ const Datepicker: React.FC<DatepickerProps> = ({
 }) => {
   const width = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0)
   const [startDate, setStartDate] = useState<Date>(typeof(value) === 'string' ? new Date(value) : dayjs().subtract(18, 'year').toDate());
-  const [showMonthPicker, setShowMonthPicker] = useState<boolean>(false);
+  const [showMonthPicker, setShowMonthPicker] = useState<boolean>(true);
   const [showYearPicker, setShowYearPicker] = useState<boolean>(false);
+  const [showDayPicker, setShowDayPicker] = useState<boolean>(false);
 
   const closeCalendarCallback = () => {
-    setShowMonthPicker(false);
+    setShowMonthPicker(true);
     setShowYearPicker(false);
   };
 
@@ -95,6 +71,27 @@ const Datepicker: React.FC<DatepickerProps> = ({
     }
   }, [value])
 
+  const handleStateChange = () => {
+    // Check if monthpicker is open
+    if (showMonthPicker) {
+      setShowDayPicker(true);
+      setShowYearPicker(false);
+      setShowMonthPicker(false);
+    }
+
+    if (showDayPicker) {
+      setShowDayPicker(false);
+      setShowMonthPicker(true);
+      setShowYearPicker(true);
+    }
+
+    if (showYearPicker) {
+      setShowMonthPicker(true);
+      setShowYearPicker(false);
+      setShowDayPicker(false);
+    }
+  }
+
   const handleDateOnChange = (date: Date, e: ChangeEvent<any>) => {
 
     // Check if only year or month has changed
@@ -102,22 +99,55 @@ const Datepicker: React.FC<DatepickerProps> = ({
     // Overriding it so that doesn't happen
     const newDate = getNewDate(startDate ? startDate : new Date(), date);
 
-    // Check if monthpicker is open
-    if (showMonthPicker) {
-      setShowMonthPicker(false);
-    }
-
-    if (showYearPicker) {
-      setShowMonthPicker(true);
-      setShowYearPicker(false);
-    }
+    // Handle datepicker state changes
+    handleStateChange();
 
     // Check if computed date is null
     if (newDate) {
       onChange ? onChange(name, dayjs(newDate).format('YYYY-MM-DD')) : '';
-
       setStartDate(newDate);
     }
+  }
+
+  const yearPickerDateChange = (initial_date: Dayjs, new_date: Dayjs) => {
+    // Retain month and date
+    return new Date(new_date.year(), initial_date.month(), initial_date.date());
+  }
+  
+  const getNewDate = (initial_date: Date, new_date: Date) => {
+    let newDate: Date;
+  
+    // Check if valid date, otherwise return null
+    if (!dayjs(new_date).isValid()) {
+      return null;
+    }
+  
+    // Converting to dayjs
+    const dayjsInitialDate = dayjs(initial_date);
+    const dayjsNewDate = dayjs(new_date);
+  
+    // Check if datepicker is on year mode
+    switch (showYearPicker) {
+      case false:
+        // Check if only year has changed
+        if (dayjsInitialDate.year() !== dayjsNewDate.year() && dayjsInitialDate.month() === dayjsNewDate.month()) {
+          // Retain month and date
+          newDate = new Date(dayjsNewDate.year(), dayjsInitialDate.month(), dayjsInitialDate.date());
+        }
+        // Check if only month has changed
+        else if (dayjsInitialDate.month() !== dayjsNewDate.month() && dayjsInitialDate.date() === dayjsNewDate.date()) {
+          // Retain date
+          newDate = new Date(dayjsNewDate.year(), dayjsNewDate.month(), dayjsInitialDate.date());
+        } else {
+          newDate = new_date;
+        }
+        break;
+      default:
+        newDate = yearPickerDateChange(dayjsInitialDate, dayjsNewDate);
+    }
+  
+    
+    return newDate;
   }
 
   return (
@@ -156,8 +186,8 @@ const Datepicker: React.FC<DatepickerProps> = ({
         showFourColumnMonthYearPicker={showMonthPicker}
         showYearPicker={showYearPicker}
         onCalendarClose={closeCalendarCallback}
-        shouldCloseOnSelect={showMonthPicker || showYearPicker ? false : true}
-        placeholderText="MM/DD/YYYY"
+        shouldCloseOnSelect={showYearPicker ? true : false}
+        placeholderText={placeholderText}
         customInput={
           <Input
             name={name}
