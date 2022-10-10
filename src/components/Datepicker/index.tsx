@@ -105,7 +105,6 @@ const Datepicker: React.FC<DatepickerProps> = ({
     // Check if computed date is null
     if (newDate) {
       onChange ? onChange(name, dayjs(newDate).format('YYYY-MM-DD')) : '';
-      console.log(newDate);
       setStartDate(newDate);
     }
   }
