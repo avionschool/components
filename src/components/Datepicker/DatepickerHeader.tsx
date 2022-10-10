@@ -25,6 +25,17 @@ const DatepickerHeader: React.FC<DatepickerHeaderProps> = ({
     setShowYearPicker(true);
   };
 
+  const manageShownDate = () => {
+    switch (true) {
+      case showYearPicker:
+        return dayjs(shownDate).format("MMMM DD");
+      case showMonthPicker:
+        return dayjs(shownDate).format("MMMM");
+      default:
+        return dayjs(shownDate).format("MMMM");
+    }
+  }
+
   return (
     <div className={`
       flex
@@ -76,7 +87,7 @@ const DatepickerHeader: React.FC<DatepickerHeaderProps> = ({
         onClick={showMonthPicker ? openYearPicker : openMonthPicker}
         data-testid="currentdatedisplay"
       >
-        {dayjs(shownDate).format("MMMM YYYY")}
+        {manageShownDate()}
       </div>
 
       <div
