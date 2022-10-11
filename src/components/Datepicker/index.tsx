@@ -200,6 +200,7 @@ const Datepicker: React.FC<DatepickerProps> = ({
         popperPlacement="top-start"
         data-testid={id}
         withPortal={width < 640 ? true : false}
+        onFocus={width < 640 ? e => e.target.blur() : undefined}
       />
     </>
   );
