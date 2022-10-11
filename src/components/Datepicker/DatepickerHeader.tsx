@@ -65,7 +65,6 @@ const DatepickerHeader: React.FC<DatepickerHeaderProps> = ({
           bold
           ml-4
         `}
-        onClick={showMonthPicker ? decreaseYear : showYearPicker ? () => changeYear(shownDate.getFullYear() - 10) : decreaseMonth}
         data-testid="prev"
       >
         <BiChevronLeft />
@@ -81,10 +80,8 @@ const DatepickerHeader: React.FC<DatepickerHeaderProps> = ({
           text-center
           bold
           p-2
-          ${showYearPicker ? '' : 'hover:bg-primary-100 cursor-pointer'}
         `
       }
-        onClick={showMonthPicker ? openYearPicker : openMonthPicker}
         data-testid="currentdatedisplay"
       >
         {manageShownDate()}
