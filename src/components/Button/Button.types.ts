@@ -1,4 +1,4 @@
-import { MouseEventHandler } from "react";
+import React, { MouseEventHandler } from "react";
 export interface ButtonProps {
   id?: string;
   type?: 'button' | 'submit';
@@ -11,4 +11,7 @@ export interface ButtonProps {
   className?: string;
   round?: boolean;
   primary?: boolean;
+  loading?: boolean;
+  icon?: React.ReactNode;
+  iconLocation?: 'left' | 'right'
 }
