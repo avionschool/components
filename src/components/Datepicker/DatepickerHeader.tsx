@@ -64,7 +64,9 @@ const DatepickerHeader: React.FC<DatepickerHeaderProps> = ({
           rounded-full
           bold
           ml-4
+          ${showYearPicker ? '' : 'invisible pointer-events-none' }
         `}
+        onClick={showMonthPicker ? decreaseYear : showYearPicker ? () => changeYear(shownDate.getFullYear() + 10) : increaseMonth}
         data-testid="prev"
       >
         <BiChevronLeft />
@@ -105,6 +107,7 @@ const DatepickerHeader: React.FC<DatepickerHeaderProps> = ({
           active:bg-primary-500
           active:text-grayscale-light-white
           mr-4
+          ${showYearPicker ? '' : 'invisible pointer-events-none' }
         `}
         onClick={showMonthPicker ? increaseYear : showYearPicker ? () => changeYear(shownDate.getFullYear() + 10) : increaseMonth}
         data-testid="next"
