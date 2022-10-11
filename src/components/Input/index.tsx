@@ -30,6 +30,7 @@ const Input: React.FC<InputProps> = ({
   onKeyUp,
   inputMode,
   onFocus,
+  onInput,
   ...props
 }) => {
   const errorClasses = isError ? 'text-error-500 border-error-500 bg-error-100 border-solid' : '';
@@ -85,7 +86,8 @@ const Input: React.FC<InputProps> = ({
         defaultValue={initialValue}
         value={value}
         maxLength={maxLength}
-        onInput={onKeyDown}
+        // onInput={onKeyDown}
+        onKeyDown={onKeyDown}
         onKeyUp={onKeyUp}
         inputMode={inputMode}
         onFocus={onFocus}
