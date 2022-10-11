@@ -28,4 +28,5 @@ export interface InputProps {
   onKeyUp?: JSONValue | any;
   inputMode?: string | any;
   onFocus?: JSONValue;
+  onInput?: JSONValue;
 }
