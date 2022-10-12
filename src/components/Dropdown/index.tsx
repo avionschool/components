@@ -9,7 +9,6 @@ const StyledDropdown = styled.select<DropdownProps>`
   flex-direction: row;
   align-items: center;
   padding: 16px;
-  gap: 8px;
   width: 100%;
   height: 55px;
   border-radius: 12px;
@@ -33,13 +32,15 @@ const Dropdown: React.FC<DropdownProps> = ({
   type,
   options,
   helper,
+  className,
+  initialValue,
   ...props
  }) => {
 
   const errorClasses = isError ? 'text-error-500 border-error-500 bg-error-100 border-solid' : '';
   const warningClasses = isWarning ? 'text-warning-500 border-warning-500 bg-warning-100 border-solid' : '';
   const successClasses = isSuccess ? 'text-success-500 border-success-500 bg-success-100 border-solid' : '';
-  const disabledClasses = isDisabled ? 'opacity-50 pointer-events-none ' : '';
+  const disabledClasses = isDisabled ? 'opacity-50 pointer-events-none' : '';
 
   const dropdownClasses = twMerge(`
     focus:border-information-500
@@ -50,6 +51,7 @@ const Dropdown: React.FC<DropdownProps> = ({
     ${warningClasses}
     ${successClasses}
     ${disabledClasses}
+    ${className}
   `);
 
 
@@ -58,22 +60,23 @@ const Dropdown: React.FC<DropdownProps> = ({
       <StyledDropdown
         id={id}
         type={type}
-        placeholder={placeholder}
         onChange={onChange}
         className={dropdownClasses}
         role="listbox"
+        style={{ appearance: 'none' }}
         {...props}
       >
-        <option value=""></option>
+        <option value="" disabled={true} className="opacity-50 pointer-events-none" selected>{placeholder}</option>
         {
           options?.map(option => {
             return (
               <option 
                 value={option.value}
                 disabled={option.disabled}
-                id={option.value}
+                id={option.value.toString()}
                 data-testid={option.value}
                 key={option.value}
+                selected={option.value === initialValue ? true : false}
               > {option.display} </option>
             )
           })

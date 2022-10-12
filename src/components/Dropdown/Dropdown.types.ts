@@ -1,9 +1,9 @@
 import { ChangeEventHandler } from "react";
 
 export type DropdownOption = {
-  value: string, // Actual value of dropdown option
-  display: string, // Display value of dropdown option
-  disabled: boolean
+  value: string | number, // Actual value of dropdown option
+  display: string | number, // Display value of dropdown option
+  disabled?: boolean
 }
 
 export interface DropdownProps {
@@ -19,4 +19,6 @@ export interface DropdownProps {
   type?: string;
   options?: DropdownOption[]
   helper?: string;
+  className?: string;
+  initialValue?: string | number;
 }

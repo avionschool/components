@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { InputProps } from "./Input.types";
-import styled from "styled-components";
 import { twMerge } from "tailwind-merge";
 import InputMask from 'react-input-mask';
 
