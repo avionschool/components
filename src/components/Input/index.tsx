@@ -20,7 +20,6 @@ const Input: React.FC<InputProps> = ({
   initialValue,
   className,
   value,
-  ref,
   maxLength,
   mask='',
   maskPlaceholder='',
