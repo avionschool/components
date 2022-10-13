@@ -7,6 +7,7 @@ export { default as FormControl } from './FormControl';
 export { default as Input } from './Input';
 export { default as Radio } from './Radio';
 export { default as Sidebar } from './Sidebar';
+export { default as TextArea } from './TextArea';
 export { default as WizardFooter } from './WizardFooter';
 export { default as FormStep } from './WizardFooter/FormStep';
 export { default as FormSteps } from './WizardFooter/FormSteps';

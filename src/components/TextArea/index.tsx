@@ -1,34 +1,20 @@
-import React, { useState } from "react";
-import { InputProps } from "./Input.types";
-import { twMerge } from "tailwind-merge";
-import InputMask from 'react-input-mask';
+import React from 'react';
+import { TextAreaProps } from './TextArea.types';
+import { twMerge } from 'tailwind-merge';
 
-const Input: React.FC<InputProps> = ({
+const TextArea: React.FC<TextAreaProps> = ({
   id,
   name,
-  label,
-  isError,
-  isWarning,
-  message,
-  isSuccess,
-  isDisabled,
+  isWarning=false,
+  isDisabled=false,
+  isError=false,
+  isSuccess=false,
   placeholder,
   onChange,
-  type,
-  checked,
-  onPaste,
+  value,
   initialValue,
   className,
-  value,
   maxLength,
-  mask='',
-  maskPlaceholder='',
-  alwaysShowMask=false,
-  onKeyDown,
-  onKeyUp,
-  inputMode,
-  onFocus,
-  onInput,
   ...props
 }) => {
   const errorClasses = isError ? 'text-error-500 border-error-500 bg-error-100 border-solid' : '';
@@ -36,7 +22,7 @@ const Input: React.FC<InputProps> = ({
   const successClasses = isSuccess ? 'text-success-500 border-success-500 bg-success-100 border-solid' : '';
   const disabledClasses = isDisabled ? 'opacity-50 pointer-events-none ' : '';
 
-  const inputClasses = twMerge(`
+  const textAreaClasses = twMerge(`
     focus:border-information-500
     focus:border-solid
     text-base
@@ -67,32 +53,22 @@ const Input: React.FC<InputProps> = ({
 
   return (
     <>
-      <InputMask
-        mask={mask}
-        maskChar={null}
-        alwaysShowMask={alwaysShowMask}
+      <textarea
         id={id}
         name={name}
-        type={type}
         onChange={onChange}
         placeholder={placeholder}
-        className={inputClasses}
+        className={textAreaClasses}
         data-testid={id}
         role="input"
-        checked={checked}
-        onPaste={onPaste}
         defaultValue={initialValue}
         value={value}
         maxLength={maxLength}
-        // onInput={onKeyDown}
-        onKeyDown={onKeyDown}
-        onKeyUp={onKeyUp}
-        inputMode={inputMode}
-        onFocus={onFocus}
+        style={{ resize: 'none' }}
         {...props}
       />
     </>
   );
-};
+}
 
-export default Input;
+export default TextArea;

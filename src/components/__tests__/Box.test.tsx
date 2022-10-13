@@ -5,7 +5,7 @@ import userEvent from '@testing-library/user-event';
 
 import Box from '../Box';
 import { CheckboxConstants } from '../../constants/OptionConstants';
-import CheckboxGroup from '../CheckboxGroup';
+import Radio from '../Radio';
 
 describe('Running Test for Box', () => {
   it('Box component is rendered', async () => {
@@ -14,8 +14,8 @@ describe('Running Test for Box', () => {
   });
 
   it('Box component renders children component', async () => {
-    render(<Box id="box" children={<CheckboxGroup options={CheckboxConstants} />}/>);
-    expect(screen.getByTestId('checkbox_container')).toBeInTheDocument();
+    render(<Box id="box" children={<Radio id="radio" value="radio" />}/>);
+    expect(screen.getByTestId('radio')).toBeInTheDocument();
   });
 
   it('Box component runs onclick function when clicked', async () => {
