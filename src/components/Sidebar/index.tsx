@@ -61,7 +61,6 @@ const Sidebar: React.FC<SidebarProps> = ({
     transition-all
     ease-in-out
     delay-100
-    drop-shadow-md
   `);
 
   const topBarClasses = twMerge(
@@ -76,7 +75,6 @@ const Sidebar: React.FC<SidebarProps> = ({
       bg-grayscale-light-white
       lg:hidden
       z-[1]
-      drop-shadow-md
     `
   )
 
