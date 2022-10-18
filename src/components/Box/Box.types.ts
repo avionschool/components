@@ -8,4 +8,5 @@ export interface BoxProps {
   handleClick?: React.MouseEventHandler<HTMLDivElement> | undefined;
   isReadOnly?: boolean; // Whether or not box is read only
   children?: React.ReactNode | React.ReactNode[];
+  className?: string;
 }

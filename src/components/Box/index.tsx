@@ -12,7 +12,8 @@ const Box: React.FC<BoxProps> = ({
   isSelected, 
   handleClick, 
   children,
-  isReadOnly
+  isReadOnly,
+  className
 }) => {
   const boxClasses = [
     'flex',
@@ -36,6 +37,7 @@ const Box: React.FC<BoxProps> = ({
     ${borderColor}
     ${disabledClasses}
     ${readOnlyClass}
+    ${className}
   `);
   
   return (
