@@ -75,6 +75,7 @@ const Sidebar: React.FC<SidebarProps> = ({
       bg-grayscale-light-white
       lg:hidden
       z-[1]
+      drop-shadow-md
     `
   )
 
