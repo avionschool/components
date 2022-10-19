@@ -1,4 +1,5 @@
 export { default as Box } from './Box';
+export { default as DisplayBox } from './DisplayBox';
 export { default as Button } from './Button';
 export { default as Checkbox } from './Checkbox';
 export { default as Datepicker } from './Datepicker';
