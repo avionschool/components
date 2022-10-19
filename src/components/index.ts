@@ -12,5 +12,6 @@ export { default as TextArea } from './TextArea';
 export { default as WizardFooter } from './WizardFooter';
 export { default as FormStep } from './WizardFooter/FormStep';
 export { default as FormSteps } from './WizardFooter/FormSteps';
+export { default as StudentReviewForm } from './StudentReviewForm';
 export { default as lotties } from './lotties';
 export { default as SidebarItemProps } from './Sidebar/SidebarItem.types';
