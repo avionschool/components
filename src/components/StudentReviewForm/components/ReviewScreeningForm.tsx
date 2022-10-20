@@ -11,7 +11,13 @@ const ReviewScreeningForm: React.FC<DisplayFormProps> = ({ student }) => {
     const startDate = dayjs(`${start_month} ${start_year}`);
     const endDate = dayjs(`${end_month} ${end_year}`);
 
-    const stringDiff = endDate.diff(startDate, 'month');
+    let stringDiff;
+    if (endDate.isValid()) {
+      stringDiff = endDate.diff(startDate, 'month');
+    } else {
+      stringDiff = dayjs().diff(startDate, 'month');
+    }
+
     const years = Math.floor(stringDiff / 12);
     const months = stringDiff % 12;
     const yearStatement = years ? `${years} years ` : '';
@@ -64,14 +70,45 @@ const ReviewScreeningForm: React.FC<DisplayFormProps> = ({ student }) => {
             </div>
           </div>
         </div>
+        <div id="academic_history" className="flex flex-col my-4"
+        >
+          <h3 className="text-2xl font-bold mb-6">
+            Academic History
+          </h3>
+          
+          <div className="flex flex-row">
+            <div className="flex-1 w-full mb-6 md:mb-4">
+              <div className="font-bold mb-3 block">
+                Which of the following is the highest level of education you have completed?
+              </div>
+              <p>{student?.screening?.academic_history?.academic_experience}</p>
+            </div>
+          </div>
+
+          <Box id="closed-form" className="w-full">
+            <div className="flex flex-col sm:flex-row p-6 items-center justify-between w-full gap-8">
+              <div className="flex flex-col gap-4">
+                <span className="text-2xl text-grayscale-light-body-text font-extrabold"> { student?.screening?.academic_history?.school } </span>
+                <span> { student?.screening?.academic_history?.degree } </span>
+                {/* Oct 2021 - May 2022 • 8 months */}
+                <span> {`
+                  ${student?.screening?.academic_history?.start_month} ${student?.screening?.academic_history?.start_year} - 
+                  ${student?.screening?.academic_history?.end_month} ${student?.screening?.academic_history?.end_year} • 
+                  ${calculateTimeDifference(student?.screening?.academic_history?.start_month, student?.screening?.academic_history?.start_year, student?.screening?.academic_history?.end_month, student?.screening?.academic_history?.end_year)} `}</span>
+              </div>
+            </div>
+          </Box>
+
+        </div>
         <div id="employment_history" className="flex flex-col my-4"
         >
           <h3 className="text-2xl font-bold mb-6">
             Employment History
           </h3>
           {
+            student?.screening?.employment_history?.length > 0 ? 
             student?.screening?.employment_history?.map((employment: JSONValue) => {
-              const { start_month, start_year, end_month, end_year, company_name } = employment;
+              const { start_month, start_year, end_month, end_year, company_name, current_role } = employment;
               return (
                 <Box id="closed-form" className="w-full">
                   <div className="flex flex-col sm:flex-row p-6 items-center justify-between w-full gap-8">
@@ -79,12 +116,13 @@ const ReviewScreeningForm: React.FC<DisplayFormProps> = ({ student }) => {
                       <span className="text-2xl text-grayscale-light-body-text font-extrabold">{company_name} </span>
                       <span> {title} </span>
                       {/* Oct 2021 - May 2022 • 8 months */}
-                      <span> {`${start_month} ${start_year} - ${end_month} ${end_year} • ${calculateTimeDifference(start_month, start_year, end_month, end_year)} `}</span>
+                      <span> {`${start_month} ${start_year} - ${current_role?.includes('no') ? (end_month + ' ' + end_year) : 'Present'} • ${calculateTimeDifference(start_month, start_year, end_month, end_year)} `}</span>
                     </div>
                   </div>
                 </Box>
               )
-            })
+            }) :
+            <p> I have no experience </p>
           }
         </div>
         <div id="web_development_experience">
@@ -141,7 +179,7 @@ const ReviewScreeningForm: React.FC<DisplayFormProps> = ({ student }) => {
               <div className="font-bold mb-3 block">
                 Why should we pick you?
               </div>
-              <p>{student?.screening?.final_question}</p>
+              <p>{student?.screening?.why_should_we_pick_you}</p>
             </div>
           </div>
         </div>
