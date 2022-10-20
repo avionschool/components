@@ -54,7 +54,7 @@ const Datepicker: React.FC<DatepickerProps> = ({
   value,
   isError = false
 }) => {
-  const width = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0)
+  const width = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0);
   const [startDate, setStartDate] = useState<Date>(typeof(value) === 'string' ? new Date(value) : dayjs().subtract(18, 'year').toDate());
   const [showMonthPicker, setShowMonthPicker] = useState<boolean>(true);
   const [showYearPicker, setShowYearPicker] = useState<boolean>(false);

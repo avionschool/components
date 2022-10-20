@@ -108,7 +108,7 @@ const ReviewScreeningForm: React.FC<DisplayFormProps> = ({ student }) => {
           {
             student?.screening?.employment_history?.length > 0 ? 
             student?.screening?.employment_history?.map((employment: JSONValue) => {
-              const { start_month, start_year, end_month, end_year, company_name, current_role } = employment;
+              const { start_month, start_year, end_month, end_year, company_name, current_role, title } = employment;
               return (
                 <Box id="closed-form" className="w-full">
                   <div className="flex flex-col sm:flex-row p-6 items-center justify-between w-full gap-8">
