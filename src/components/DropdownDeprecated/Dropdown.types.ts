@@ -15,12 +15,10 @@ export interface DropdownProps {
   isError?: boolean;
   isSuccess?: boolean;
   placeholder?: string;
-  onChange?: JSONValue;
+  onChange?: ChangeEventHandler<HTMLSelectElement>;
   type?: string;
   options?: DropdownOption[]
   helper?: string;
   className?: string;
   initialValue?: string | number;
-  selectedValue?: string | number;
-  onBlur?: JSONValue;
 }
