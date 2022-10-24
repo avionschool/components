@@ -115,7 +115,7 @@ const Dropdown: React.FC<DropdownProps> = ({
     }
     // Mobile + mobile overlay
     return (
-      <div className={`w-screen h-screen opacity-100 z-5 bg-primary-500 absolute bg-grayscale-light-header-text left-0 top-0 flex flex-col align-center items-center pt-24 ${isOpen ? '' : 'hidden'}`}>
+      <div className={`w-screen h-screen opacity-100 z-[20] bg-primary-500 absolute bg-grayscale-light-header-text left-0 top-0 flex flex-col align-center items-center pt-24 ${isOpen ? '' : 'hidden'}`}>
         <DropdownListContainer 
           className={`${isOpen ? `${dropdownListClasses} opacity-100 max-h-[80vh] z-12` : 'hidden'}`}
         >
@@ -127,7 +127,7 @@ const Dropdown: React.FC<DropdownProps> = ({
                 const { disabled, value, display } = item;
                 return (
                   <ListItem 
-                    className={`w-100% p-2 pl-3 rounded-xl list-none hover:bg-grayscale-light-body-border active:bg-grayscale-light-placeholder ${disabled ? 'pointer-events-none cursor-not-allowed opacity-50' : 'cursor-pointer'}`}
+                    className={`w-100% p-6 text-xl font-extrabold pl-3  rounded-xl list-none hover:bg-grayscale-light-body-border active:bg-grayscale-light-placeholder ${disabled ? 'pointer-events-none cursor-not-allowed opacity-50' : 'cursor-pointer'}`}
                     value={value}
                     onClick={() => customOnChange(value)}
                     key={value}
