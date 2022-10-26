@@ -43,7 +43,7 @@ const Input: React.FC<InputProps> = ({
     border-transparent
     md:h-auto
     py-4
-    px-2
+    px-3
     lg:p-4
     bg-grayscale-light-body
     flex

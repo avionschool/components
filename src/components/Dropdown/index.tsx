@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { DropdownProps } from './Dropdown.types';
-import { BiCaretDown } from 'react-icons/bi';
+import { BiCaretUp, BiCaretDown } from 'react-icons/bi';
 import { twMerge } from 'tailwind-merge';
 
 const DropdownContainer = styled('div')``;
@@ -72,16 +72,14 @@ const Dropdown: React.FC<DropdownProps> = ({
   `);
 
   const dropdownListClasses = twMerge(`
-    p-0
-    m-0 
-    mt-2 
+    mt-4
     rounded-xl 
     bg-grayscale-light-white 
     text-bold 
     z-10
     visible
     w-[75%]
-    sm:w-full
+    sm:w-full 
   `)
 
   const renderDropdownList = () => {
@@ -94,7 +92,7 @@ const Dropdown: React.FC<DropdownProps> = ({
           className={`${isOpen ? `${dropdownListClasses}` : 'hidden'}`}
         >
             <DropdownList 
-              className="h-64 overflow-auto"
+              className="max-h-64 overflow-auto sm-shadow rounded-xl"
             >
               {options?.map((item: JSONValue, index) => {
                 // Check if first or last item
@@ -127,7 +125,7 @@ const Dropdown: React.FC<DropdownProps> = ({
                 const { disabled, value, display } = item;
                 return (
                   <ListItem 
-                    className={`w-100% p-6 text-xl font-extrabold pl-3  rounded-xl list-none hover:bg-grayscale-light-body-border active:bg-grayscale-light-placeholder ${disabled ? 'pointer-events-none cursor-not-allowed opacity-50' : 'cursor-pointer'}`}
+                    className={`w-100% p-4 text-xl font-extrabold rounded-xl list-none hover:bg-grayscale-light-body-border active:bg-grayscale-light-placeholder ${disabled ? 'pointer-events-none cursor-not-allowed opacity-50' : 'cursor-pointer'}`}
                     value={value}
                     onClick={() => customOnChange(value)}
                     key={value}
@@ -152,14 +150,15 @@ const Dropdown: React.FC<DropdownProps> = ({
         tabIndex={0}
       >
         <DropdownHeader 
-          className={`h-full mt-1 p-3 text-extrabold bg-grayscale-light-body rounded-xl flex flex-row justify-between align-center`}
+          className={`mt-2 p-3 font-extrabold bg-grayscale-light-body rounded-xl flex flex-row justify-between place-items-center`}
           data-testid={id}
         > 
           <div className={`${(value === null || value === '') ? 'opacity-50' : ''}`}>
             {currValue?.display ? currValue?.display : placeholder}
           </div>
           <div className="flex flex-col justify-center">
-            <BiCaretDown className="self-end"/>
+            { !isOpen && <BiCaretDown className="self-end"/> }
+            { isOpen && <BiCaretUp className="self-end"/> }
           </div>
         </DropdownHeader>
         {renderDropdownList()}
