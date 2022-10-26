@@ -92,7 +92,7 @@ const Dropdown: React.FC<DropdownProps> = ({
           className={`${isOpen ? `${dropdownListClasses}` : 'hidden'}`}
         >
             <DropdownList 
-              className="max-h-64 overflow-auto sm-shadow rounded-xl"
+              className="max-h-64 overflow-auto shadow-sm rounded-xl"
             >
               {options?.map((item: JSONValue, index) => {
                 // Check if first or last item
