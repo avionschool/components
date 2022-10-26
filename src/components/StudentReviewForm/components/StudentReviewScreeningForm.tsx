@@ -42,7 +42,7 @@ const StudentReviewScreeningForm: React.FC<StudentDisplayFormProps> = ({
                 About You
             </h3>
             <div 
-              className="flex flex-row text-xl justify-center items-center text-primary-500 font-extrabold"
+              className="flex flex-row text-l justify-center items-center text-primary-500 font-extrabold"
               onClick={() => navigate('/screening/personal')}
             >
               <span> Change </span> 
@@ -95,7 +95,7 @@ const StudentReviewScreeningForm: React.FC<StudentDisplayFormProps> = ({
             <h3 className="text-2xl font-bold ">
                 Academic History
             </h3>
-            <div className="flex flex-row text-xl justify-center items-center text-primary-500 font-extrabold">
+            <div className="flex flex-row text-l justify-center items-center text-primary-500 font-extrabold">
               <span> Change </span> 
               <BiRightArrowAlt />
             </div>
@@ -134,7 +134,7 @@ const StudentReviewScreeningForm: React.FC<StudentDisplayFormProps> = ({
             <h3 className="text-2xl font-bold ">
                 Employment History
             </h3>
-            <div className="flex flex-row text-xl justify-center items-center text-primary-500 font-extrabold">
+            <div className="flex flex-row text-l justify-center items-center text-primary-500 font-extrabold">
               <span> Change </span> 
               <BiRightArrowAlt />
             </div>
@@ -167,7 +167,7 @@ const StudentReviewScreeningForm: React.FC<StudentDisplayFormProps> = ({
             <h3 className="text-2xl font-bold ">
                 Web Development Experience
             </h3>
-            <div className="flex flex-row text-xl justify-center items-center text-primary-500 font-extrabold">
+            <div className="flex flex-row text-l justify-center items-center text-primary-500 font-extrabold">
               <span> Change </span> 
               <BiRightArrowAlt />
             </div>
@@ -206,7 +206,7 @@ const StudentReviewScreeningForm: React.FC<StudentDisplayFormProps> = ({
             <h3 className="text-2xl font-bold ">
                 Financial Capacity
             </h3>
-            <div className="flex flex-row text-xl justify-center items-center text-primary-500 font-extrabold">
+            <div className="flex flex-row text-l justify-center items-center text-primary-500 font-extrabold">
               <span> Change </span> 
               <BiRightArrowAlt />
             </div>
@@ -229,7 +229,7 @@ const StudentReviewScreeningForm: React.FC<StudentDisplayFormProps> = ({
             <h3 className="text-2xl font-bold ">
                 Final Question
             </h3>
-            <div className="flex flex-row text-xl justify-center items-center text-primary-500 font-extrabold">
+            <div className="flex flex-row text-l justify-center items-center text-primary-500 font-extrabold">
               <span> Change </span> 
               <BiRightArrowAlt />
             </div>
