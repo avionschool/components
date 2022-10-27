@@ -144,7 +144,7 @@ const StudentReviewScreeningForm: React.FC<StudentDisplayFormProps> = ({
             student?.screening?.employment_history?.map((employment: JSONValue) => {
               const { start_month, start_year, end_month, end_year, company_name, current_role, title } = employment;
               return (
-                <Box id="closed-form" className="w-full">
+                <Box id="closed-form" className="w-full mb-4">
                   <div className="flex flex-col sm:flex-row p-6 items-center justify-between w-full gap-8">
                     <div className="flex flex-col gap-4">
                       <span className="text-2xl text-grayscale-light-body-text font-extrabold">{company_name} </span>
