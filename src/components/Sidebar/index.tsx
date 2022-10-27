@@ -128,7 +128,7 @@ const Sidebar: React.FC<SidebarProps> = ({
           >
             {
               items.map(({ link, name, disabled, icon }) => {
-                const isActive: boolean = location.pathname.includes(link);
+                const isActive: boolean = link.includes(location.pathname);
                 return (
                   <SidebarItem
                     isActive={isActive}
