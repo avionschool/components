@@ -90,12 +90,14 @@ const StudentReviewScreeningForm: React.FC<StudentDisplayFormProps> = ({
         >
           <div 
             className="flex flex-row justify-between items-center align-center mb-6 cursor-pointer"
-            onClick={() => navigate('/screening/academic')}
           >
             <h3 className="text-2xl font-bold ">
                 Academic History
             </h3>
-            <div className="flex flex-row text-l justify-center items-center text-primary-500 font-extrabold">
+            <div 
+              className="flex flex-row text-l justify-center items-center text-primary-500 font-extrabold"
+              onClick={() => navigate('/screening/academic')}
+            >
               <span> Change </span> 
               <BiRightArrowAlt />
             </div>
@@ -129,12 +131,14 @@ const StudentReviewScreeningForm: React.FC<StudentDisplayFormProps> = ({
         >
           <div 
             className="flex flex-row justify-between items-center align-center mb-6 cursor-pointer"
-            onClick={() => navigate('/screening/employment')}
           >
             <h3 className="text-2xl font-bold ">
                 Employment History
             </h3>
-            <div className="flex flex-row text-l justify-center items-center text-primary-500 font-extrabold">
+            <div 
+              className="flex flex-row text-l justify-center items-center text-primary-500 font-extrabold"
+              onClick={() => navigate('/screening/employment')}
+            >
               <span> Change </span> 
               <BiRightArrowAlt />
             </div>
@@ -162,12 +166,14 @@ const StudentReviewScreeningForm: React.FC<StudentDisplayFormProps> = ({
         <div id="web_development_experience">
           <div 
             className="flex flex-row justify-between items-center align-center mb-6 cursor-pointer"
-            onClick={() => navigate('/screening/experience')}
           >
             <h3 className="text-2xl font-bold ">
                 Web Development Experience
             </h3>
-            <div className="flex flex-row text-l justify-center items-center text-primary-500 font-extrabold">
+            <div 
+              className="flex flex-row text-l justify-center items-center text-primary-500 font-extrabold"
+              onClick={() => navigate('/screening/experience')}
+            >
               <span> Change </span> 
               <BiRightArrowAlt />
             </div>
@@ -201,12 +207,14 @@ const StudentReviewScreeningForm: React.FC<StudentDisplayFormProps> = ({
         <div id="financial_capacity">
           <div 
             className="flex flex-row justify-between items-center align-center mb-6 cursor-pointer"
-            onClick={() => navigate('/screening/financial')}
           >
             <h3 className="text-2xl font-bold ">
                 Financial Capacity
             </h3>
-            <div className="flex flex-row text-l justify-center items-center text-primary-500 font-extrabold">
+            <div 
+              className="flex flex-row text-l justify-center items-center text-primary-500 font-extrabold"
+              onClick={() => navigate('/screening/financial')}
+            >
               <span> Change </span> 
               <BiRightArrowAlt />
             </div>
@@ -224,12 +232,14 @@ const StudentReviewScreeningForm: React.FC<StudentDisplayFormProps> = ({
         <div id="final_question">
           <div 
             className="flex flex-row justify-between items-center align-center mb-6 cursor-pointer"
-            onClick={() => navigate('/screening/final')}
           >
             <h3 className="text-2xl font-bold ">
                 Final Question
             </h3>
-            <div className="flex flex-row text-l justify-center items-center text-primary-500 font-extrabold">
+            <div 
+              className="flex flex-row text-l justify-center items-center text-primary-500 font-extrabold"
+              onClick={() => navigate('/screening/final')}
+            >
               <span> Change </span> 
               <BiRightArrowAlt />
             </div>

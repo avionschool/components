@@ -1,6 +1,7 @@
 export interface StudentReviewFormProps {
   showApplicationForm?: boolean;
   showScreeningForm?: boolean;
+  studentApplicationForm?: boolean;
   studentScreeningForm?: boolean;
   student: JSONValue;
   navigator?: JSONValue;
