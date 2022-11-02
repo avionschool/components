@@ -99,7 +99,7 @@ const Dropdown: React.FC<DropdownProps> = ({
                 const { disabled, value, display } = item;
                 return (
                   <ListItem 
-                    className={`w-100% p-2 pl-3 rounded-xl list-none hover:bg-grayscale-light-body-border active:bg-grayscale-light-placeholder ${disabled ? 'pointer-events-none cursor-not-allowed opacity-50' : 'cursor-pointer'}`}
+                    className={`w-100% p-4 pl-3 rounded-xl font-extrabold list-none hover:bg-grayscale-light-body-border active:bg-grayscale-light-placeholder ${disabled ? 'pointer-events-none cursor-not-allowed opacity-50' : 'cursor-pointer'}`}
                     value={value}
                     onClick={() => customOnChange(value)}
                     key={value}
