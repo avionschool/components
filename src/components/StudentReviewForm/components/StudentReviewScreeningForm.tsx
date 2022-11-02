@@ -113,7 +113,7 @@ const StudentReviewScreeningForm: React.FC<StudentDisplayFormProps> = ({
           </div>
 
           <Box id="closed-form" className="w-full">
-            <div className="flex flex-col sm:flex-row p-6 items-center justify-between w-full gap-8">
+            <div className="flex flex-col sm:flex-row p-6 sm:items-center justify-between w-full gap-8">
               <div className="flex flex-col gap-4">
                 <span className="text-2xl text-grayscale-light-body-text font-extrabold"> { student?.screening?.academic_history?.school } </span>
                 <span> { student?.screening?.academic_history?.degree } </span>
@@ -149,7 +149,7 @@ const StudentReviewScreeningForm: React.FC<StudentDisplayFormProps> = ({
               const { start_month, start_year, end_month, end_year, company_name, current_role, title } = employment;
               return (
                 <Box id="closed-form" className="w-full mb-4">
-                  <div className="flex flex-col sm:flex-row p-6 items-center justify-between w-full gap-8">
+                  <div className="flex flex-col sm:flex-row p-6 sm:items-center justify-between w-full gap-8">
                     <div className="flex flex-col gap-4">
                       <span className="text-2xl text-grayscale-light-body-text font-extrabold">{company_name} </span>
                       <span> {title} </span>
