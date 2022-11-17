@@ -63,12 +63,12 @@ const Dropdown: React.FC<DropdownProps> = ({
     rounded-xl
     shadow-sm
     box-border
-    order-1 
     self-stretch
     ${errorClasses}
     ${warningClasses}
     ${successClasses}
     ${disabledClasses}
+    ${className}
   `);
 
   const dropdownListClasses = twMerge(`
