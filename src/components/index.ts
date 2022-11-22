@@ -15,3 +15,6 @@ export { default as FormSteps } from './WizardFooter/FormSteps';
 export { default as StudentReviewForm } from './StudentReviewForm';
 export { default as lotties } from './lotties';
 export { default as SidebarItemProps } from './Sidebar/SidebarItem.types';
+export { default as SideMenu } from './SideMenu';
+export { default as Switch } from './Switch';
+export { SwitchProps } from './Switch/Switch.types';
