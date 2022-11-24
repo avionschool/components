@@ -1,3 +1,4 @@
+import _ from 'lodash';
 import React from 'react';
 import { default as ExternalSwitch } from 'react-switch';
 import { twMerge } from 'tailwind-merge';
@@ -8,7 +9,8 @@ const Switch: React.FC<SwitchProps> = ({
   onChange,
   text,
   value,
-  className
+  className,
+  description
 }) => {
   const switchOnChange = () => {
     onChange ? onChange(value) : ''
@@ -27,7 +29,12 @@ const Switch: React.FC<SwitchProps> = ({
         width={80}
         height={40}
       />
-      <span className="font-extrabold text-grayscale-light-body-text text-xl"> {text} </span>
+      <div className="flex flex-col justify-center">
+        <span className="font-extrabold text-grayscale-light-body-text text-xl"> {text} </span>
+        {
+          !_.isEmpty(description) ? <span className="font-light text-grayscale-light-body-text text-sm"> {description} </span> : <></>
+        }
+      </div>
     </div>
   )
 };

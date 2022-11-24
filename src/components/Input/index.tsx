@@ -55,7 +55,6 @@ const Input: React.FC<InputProps> = ({
     w-full
     rounded-xl
     flex-none
-    order-1
     self-stretch
     grow-0
     ${errorClasses}

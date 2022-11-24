@@ -3,7 +3,8 @@ import React, { ChangeEventHandler } from "react";
 export type DropdownOption = {
   value: string | number, // Actual value of dropdown option
   display: string | number | React.ReactNode[] | React.ReactNode, // Display value of dropdown option
-  disabled?: boolean
+  disabled?: boolean;
+  description?: string;
 }
 
 export interface DropdownProps {
