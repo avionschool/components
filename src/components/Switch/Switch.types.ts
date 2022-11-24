@@ -4,4 +4,5 @@ export interface SwitchProps {
   text?: string;
   value: JSONValue;
   className?: string;
+  description?: string;
 };
