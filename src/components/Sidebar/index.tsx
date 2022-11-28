@@ -31,9 +31,11 @@ const Sidebar: React.FC<SidebarProps> = ({
       absolute
       lg:relative
       ${isVisible ? 'right-0 z-[1001] w-[75%] sm:w-[60%] md:w-[270px] lg:w-[18%]' : 'w-[0px] fixed overflow-x-hidden -z-20 lg:z-auto'}
-      ${isHiddenForDesktop && !isVisible ? 'w-auto': 'w-[0px]'} 
+      ${isHiddenForDesktop && !isVisible ? 'w-auto' : ''}
     `
   );
+
+  // ${isHiddenForDesktop && !isVisible ? 'w-auto': 'w-[0px]'} 
 
   const logoDivClasses = twMerge(`
     flex 
@@ -49,10 +51,10 @@ const Sidebar: React.FC<SidebarProps> = ({
   `);
 
   const sidebarClasses = twMerge(`
-    ${isHiddenForDesktop ? 'lg:w-1/8 w-[0px]' : 'lg:w-1/4'}
+    ${isHiddenForDesktop ? 'lg:w-1/8' : 'lg:w-1/4'}
     lg:max-w-sm 
     bg-grayscale-light-white 
-    h-100% 
+    h-full 
     absolute 
     right-0 
     lg:left-0 
@@ -118,7 +120,7 @@ const Sidebar: React.FC<SidebarProps> = ({
             <div className={`flex flex-col lg:mt-4`}>
               <Link to="/">
                 {
-                  isHiddenForDesktop ?
+                  isHiddenForDesktop && !isVisible ?
                   <img src={AvionMobileLogo} alt={logoAlt} /> :
                   <img className="h-8 p-1 hidden lg:block flex" src={AvionLogo} alt={logoAlt} />
                 }
@@ -147,7 +149,7 @@ const Sidebar: React.FC<SidebarProps> = ({
                     disabled={disabled}
                     key={link}
                     onClick={() => setIsVisible(false)}
-                    isHiddenForDesktop={isHiddenForDesktop}
+                    isMinimized={isHiddenForDesktop && !isVisible}
                   />
                 )
               })
@@ -159,6 +161,7 @@ const Sidebar: React.FC<SidebarProps> = ({
         flex items-center justify-end justify-self-end place-self-end self-end w-[0px] lg:w-auto
         absolute bottom-0 ${isHiddenForDesktop ? 'left-[30%]' : 'left-[90%]'}
         ${isHideable ? 'visible' : 'hidden'}
+        ${isVisible ? 'hidden' : 'visible'}
         `}>
           <div className="self-end pr-2">
             {

@@ -7,5 +7,5 @@ export default interface SidebarItemProps {
   disabled: boolean;
   icon: React.ReactNode;
   onClick?: () => void;
-  isHiddenForDesktop?: boolean;
+  isMinimized?: boolean;
 }
