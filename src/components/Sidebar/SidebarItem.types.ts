@@ -8,4 +8,5 @@ export default interface SidebarItemProps {
   icon: React.ReactNode;
   onClick?: () => void;
   isMinimized?: boolean;
+  authorizedFor?: string[];
 }

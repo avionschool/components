@@ -8,4 +8,5 @@ export interface SidebarProps {
   logoAlt: string;
   className?: string;
   isHideable?: boolean;
+  currentUserType?: string;
 }
