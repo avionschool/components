@@ -45,7 +45,8 @@ const SidebarItem: React.FC<SidebarItemProps> = ({
             ${disabledClass}
             justify-center
             lg:justify-start
-            ${isMinimized ? 'p-2' : 'p-5'}
+            p-5
+            ${isMinimized ? 'px-2' : 'p-5'}
             m-5
           `
         }>
