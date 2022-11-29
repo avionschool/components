@@ -9,7 +9,8 @@ const SidebarItem: React.FC<SidebarItemProps> = ({
     isActive,
     disabled,
     icon,
-    onClick
+    onClick,
+    isMinimized
   }) => {
   const defaultStyle = [
     'nav-item',
@@ -45,13 +46,14 @@ const SidebarItem: React.FC<SidebarItemProps> = ({
             justify-center
             lg:justify-start
             p-5
+            ${isMinimized ? 'px-2' : 'p-5'}
             m-5
           `
         }>
-          <div className="w-1/5 flex justify-end">
+          <div className={` flex ${isMinimized ?  'w-full justify-center text-xl font-extrabold' : 'w-1/5 justify-end'}`}>
             {icon}
           </div>
-          <div className="w-4/5">
+          <div className={` ${isMinimized ? 'hidden' : 'visible w-4/5'}`}>
             {name}
           </div>
         </div>

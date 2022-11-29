@@ -7,4 +7,5 @@ export interface SidebarProps {
   items: SidebarItemProps[],
   logoAlt: string;
   className?: string;
+  isHideable?: boolean;
 }

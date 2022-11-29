@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { BiMenuAltRight, BiX } from "react-icons/bi";
+import { BiMenuAltRight, BiX, BiArrowFromRight, BiArrowFromLeft } from "react-icons/bi";
 import { Link, useLocation } from "react-router-dom";
 import { twMerge } from "tailwind-merge";
 
@@ -15,10 +15,12 @@ const Sidebar: React.FC<SidebarProps> = ({
   items,
   logoAlt,
   mobileLogoAlt,
-  className = ''
+  className = '',
+  isHideable
 }) => {
   const location = useLocation();
   const [isVisible, setIsVisible] = useState<boolean>(false);
+  const [isHiddenForDesktop, setIsHiddenForDesktop] = useState<boolean>(false);
   const mobileSidebarMenuClasses = twMerge(
     `
       block
@@ -28,9 +30,12 @@ const Sidebar: React.FC<SidebarProps> = ({
       box-border
       absolute
       lg:relative
-      ${isVisible ? 'right-0 z-[1001] w-[75%] sm:w-[60%] md:w-[270px] lg:w-[18%]' : 'w-[0px] fixed overflow-x-hidden -z-20 lg:z-auto'} 
+      ${isVisible ? 'right-0 z-[1001] w-[75%] sm:w-[60%] md:w-[270px] lg:w-[18%]' : 'w-[0px] fixed overflow-x-hidden -z-20 lg:z-auto'}
+      ${isHiddenForDesktop && !isVisible ? 'w-auto' : ''}
     `
   );
+
+  // ${isHiddenForDesktop && !isVisible ? 'w-auto': 'w-[0px]'} 
 
   const logoDivClasses = twMerge(`
     flex 
@@ -46,7 +51,7 @@ const Sidebar: React.FC<SidebarProps> = ({
   `);
 
   const sidebarClasses = twMerge(`
-    lg:w-1/4
+    ${isHiddenForDesktop ? 'lg:w-1/8' : 'lg:w-1/4'}
     lg:max-w-sm 
     bg-grayscale-light-white 
     h-full 
@@ -61,6 +66,8 @@ const Sidebar: React.FC<SidebarProps> = ({
     transition-all
     ease-in-out
     delay-100
+    flex
+    flex-col
   `);
 
   const topBarClasses = twMerge(
@@ -112,7 +119,11 @@ const Sidebar: React.FC<SidebarProps> = ({
           <div className={logoDivClasses}>
             <div className={`flex flex-col lg:mt-4`}>
               <Link to="/">
-                <img className="h-8 p-1 hidden lg:block flex" src={AvionLogo} alt={logoAlt} />
+                {
+                  isHiddenForDesktop && !isVisible ?
+                  <img src={AvionMobileLogo} alt={logoAlt} /> :
+                  <img className="h-8 p-1 hidden lg:block flex" src={AvionLogo} alt={logoAlt} />
+                }
                 <img className="lg:hidden" src={AvionMobileLogo} alt={mobileLogoAlt} />
               </Link>
             </div>
@@ -138,9 +149,25 @@ const Sidebar: React.FC<SidebarProps> = ({
                     disabled={disabled}
                     key={link}
                     onClick={() => setIsVisible(false)}
+                    isMinimized={isHiddenForDesktop && !isVisible}
                   />
                 )
               })
+            }
+          </div>
+        </div>
+        {/* REDO THE STYLES HERE. FOR SOME REASON, SELF FLEX JUSTIFY AND PLACE TO END PARAMETERS AREN'T WORKING?? */}
+        <div className={`
+        flex items-center justify-end justify-self-end place-self-end self-end w-[0px] lg:w-auto
+        absolute bottom-0 ${isHiddenForDesktop ? 'left-[30%]' : 'left-[90%]'}
+        ${isHideable ? 'visible' : 'hidden'}
+        ${isVisible ? 'hidden' : 'visible'}
+        `}>
+          <div className="self-end pr-2">
+            {
+              isHiddenForDesktop ? 
+              <BiArrowFromLeft className="text-3xl" onClick={() => setIsHiddenForDesktop(false)}/> :
+              <BiArrowFromRight className="text-3xl" onClick={() => setIsHiddenForDesktop(true)}/>
             }
           </div>
         </div>
