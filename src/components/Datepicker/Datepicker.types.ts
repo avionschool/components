@@ -5,7 +5,7 @@ export interface DatepickerProps {
   placeholderText?: string;
   id?: string;
   name: string;
-  onChange?: (field: string, value: any, shouldValidate?: boolean | undefined) => Promise<void> | Promise<FormikErrors<any>>,
+  onChange?: JSONValue,
   value?: Date;
   isError?: boolean;
 };
