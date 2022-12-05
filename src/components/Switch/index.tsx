@@ -10,7 +10,8 @@ const Switch: React.FC<SwitchProps> = ({
   text,
   value,
   className,
-  description
+  description,
+  id
 }) => {
   const switchOnChange = () => {
     onChange ? onChange(value) : ''
@@ -28,6 +29,7 @@ const Switch: React.FC<SwitchProps> = ({
         uncheckedIcon={false}
         width={80}
         height={40}
+        data-testid={id}
       />
       <div className="flex flex-col justify-center">
         <span className="font-extrabold text-grayscale-light-body-text text-xl"> {text} </span>
