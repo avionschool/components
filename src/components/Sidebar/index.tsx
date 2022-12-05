@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { BiMenuAltRight, BiX, BiArrowFromRight, BiArrowFromLeft } from "react-icons/bi";
 import { Link, useLocation } from "react-router-dom";
 import { twMerge } from "tailwind-merge";
+import _ from 'lodash';
 
 import AvionLogo from "./avion_logo.svg";
 import AvionMobileLogo from "./mobile_avion_logo.svg";
@@ -16,7 +17,8 @@ const Sidebar: React.FC<SidebarProps> = ({
   logoAlt,
   mobileLogoAlt,
   className = '',
-  isHideable
+  isHideable,
+  currentUserType
 }) => {
   const location = useLocation();
   const [isVisible, setIsVisible] = useState<boolean>(false);
@@ -138,9 +140,11 @@ const Sidebar: React.FC<SidebarProps> = ({
             className={`mt-16 lg:gap-18 ${className} justify-center lg:justify-start`}
           >
             {
-              items.map(({ link, name, disabled, icon }) => {
+              items.map(({ link, name, disabled, icon, authorizedFor }) => {
+                const isItemVisible: boolean = _.isEmpty(authorizedFor) ? true : _.includes(authorizedFor, currentUserType);
                 const isActive: boolean = link.includes(location.pathname);
                 return (
+                  isItemVisible ?
                   <SidebarItem
                     isActive={isActive}
                     name={name}
@@ -150,7 +154,8 @@ const Sidebar: React.FC<SidebarProps> = ({
                     key={link}
                     onClick={() => setIsVisible(false)}
                     isMinimized={isHiddenForDesktop && !isVisible}
-                  />
+                  /> :
+                  <></>
                 )
               })
             }
