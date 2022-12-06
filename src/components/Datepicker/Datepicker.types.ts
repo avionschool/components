@@ -5,7 +5,7 @@ export interface DatepickerProps {
   placeholderText?: string;
   id?: string;
   name: string;
-  onChange?: JSONValue,
-  value?: Date;
+  onChange?: (field: string, value: any, shouldValidate?: boolean | undefined) => void | Promise<void>,
+  value?: Date | string;
   isError?: boolean;
 };

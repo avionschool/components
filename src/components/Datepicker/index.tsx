@@ -201,6 +201,7 @@ const Datepicker: React.FC<DatepickerProps> = ({
         data-testid={id}
         withPortal={width < 640 ? true : false}
         onFocus={width < 640 ? e => e.target.blur() : undefined}
+        filterDate={(date: Date) =>  dayjs().toDate() > date} // Disabled future dates
       />
     </>
   );
