@@ -142,7 +142,7 @@ const Sidebar: React.FC<SidebarProps> = ({
             {
               items.map(({ link, name, disabled, icon, authorizedFor }) => {
                 const isItemVisible: boolean = _.isEmpty(authorizedFor) ? true : _.includes(authorizedFor, currentUserType);
-                const isActive: boolean = link.includes(location.pathname);
+                const isActive: boolean = location.pathname.includes(link);
                 return (
                   isItemVisible ?
                   <SidebarItem
