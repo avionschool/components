@@ -35,8 +35,6 @@ const Button: React.FC<ButtonProps> = ({
   className,
   primary,
   loading=false,
-  icon,
-  iconLocation='left',
   ...props 
 }) => {
 
@@ -77,7 +75,7 @@ const Button: React.FC<ButtonProps> = ({
     ${loadingClasses}
     ${loading ? '' : hover + pressed}
   `);
-  const iconLocationStyle = iconLocation === 'left' ? 'flex-row' : 'flex-row-reverse';
+  // const iconLocationStyle = iconLocation === 'left' ? 'flex-row' : 'flex-row-reverse';
   
 
   // Input template literals as classname to determine tailwind classes
@@ -92,13 +90,14 @@ const Button: React.FC<ButtonProps> = ({
       className={generatedClasses}
       role="button"
     >
-        <div className={`flex items-center justify-center grow-0 ${iconLocationStyle}`} > 
+        {/* <div className={`flex items-center justify-center grow-0 ${iconLocationStyle}`} > */}
+        <div className={`flex items-center justify-center grow-0`} >  
           <div className="pt-0.5 flex grow-0">
-            { loading ?
+            {/* { loading ?
             <Lottie animationData={loadingAnimation} loop={true} className={`${size === 'large' ? 'w-6' : 'w-4'}`}/> :
-            <>{icon}</>}
+            <>{icon}</>} */}
           </div>
-          <div className=""> {text} </div>
+          {text}
         </div>
     </StyledButton>
   );
