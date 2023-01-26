@@ -1,6 +1,8 @@
 {
   "name": "avion-platform-components",
   "version": "0.0.1",
+  "private": false,
+  "homepage": "https://hmrbcnto.github.io/components/",
   "description": "Component library for Avion School platform",
   "author": "Homer <homer@avionschool.com>",
   "license": "MIT",
@@ -8,7 +10,9 @@
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
     "rollup": "rollup -c",
-    "test": "jest"
+    "test": "jest",
+    "predeploy": "npm run build-storybook",
+    "deploy-storybook": "gh-pages -d storybook-static"
   },
   "dependencies": {
     "@types/history": "4.7.11",
@@ -59,6 +63,7 @@
     "@types/react-input-mask": "2.0.5",
     "@types/styled-components": "^5.1.26",
     "babel-loader": "^8.2.5",
+    "gh-pages": "^5.0.0",
     "jest": "^29.1.2",
     "jest-canvas-mock": "^2.4.0",
     "jest-environment-jsdom": "^29.1.2",
