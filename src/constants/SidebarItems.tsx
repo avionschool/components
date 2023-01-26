@@ -13,7 +13,7 @@ export const SidebarItems: SidebarItemProps[] = [
     link: '/courses',
     name: 'Courses',
     icon: <BiFile/>,
-    disabled: true
+    disabled: false
   },
   // {
   //   link: '/instructors',
