@@ -407,4 +407,5 @@ template {
   flex-direction: row;
   justify-content: space-evenly;
   margin-top: 5px;
+  gap: 4px;
 }
